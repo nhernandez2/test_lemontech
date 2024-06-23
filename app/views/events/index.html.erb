@@ -1,0 +1,31 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Lista de Eventos</h1>
+<a href="<%= new_event_path %>" class="btn btn-success btn-icon-split">
+  <span class="text">Crear Evento</span>
+</a>
+<br><br>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nombre</th>
+      <th>Fecha</th>
+      <th>Ubicación</th>
+      <th>Capacidad</th>
+      <th></th>
+  </thead>
+  <tbody>
+    <% @events.each do |event| %>
+    <tr>
+      <td><%= event.id %></td>
+      <td><%= event.name %></td>
+      <td><%= event.date.strftime('%d/%m/%Y %H:%M') %></td>
+      <td><%= event.location %></td>
+      <td><%= event.capacity %></td>
+      <td><%= link_to "Detalle Evento", event_path(event), class: 'btn btn-primary' %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
