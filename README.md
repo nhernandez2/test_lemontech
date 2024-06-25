@@ -22,7 +22,7 @@ Este es un proyecto en Ruby on Rails para la prueba de selección de Lemon Tech
 
 # Variables de entorno y secretos
 
-Para poder conectarse a la Base de datos es necesario agregar al archivo ``application.yml``` las siguientes variables 
+Para poder conectarse a la Base de datos es necesario agregar al archivo `application.yml` las siguientes variables 
 
 ```
     EVENT_MANAGER_DATABASE_USERNAME: 
@@ -31,7 +31,7 @@ Para poder conectarse a la Base de datos es necesario agregar al archivo ``appli
     EVENT_MANAGER_DATABASE_NAME: 
 ```
 
-Para utilizar la api de Google Maps se necesitan las llaves para las credenciales de Ruby, estas seran entregadas por correo.
+Para utilizar la api de Google Maps se necesitan las llaves para las credenciales de Ruby, para esto, dentro del folder `config/credentials` se debe crear el archivo `development.key` y agregar el valor entregado por correo.
 
 # Instalación de manera local
 1. Clonar el proyecto: `git clone https://github.com/nhernandez2/test_lemontech`
