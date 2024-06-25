@@ -24,16 +24,22 @@
           <td><%= @event.description %></td>
         </tr>
         <tr>
-          <td><b>Ubicación:</b></td>
-          <td><%= @event.location %></td>
-        </tr>
-        <tr>
           <td><b>Fecha de creación:</b></td>
           <td><%= @event.created_at.strftime('%d/%m/%Y %H:%M') %></td>
         </tr>
         <tr>
           <td><b>Fecha de actualización:</b></td>
           <td><%= @event.updated_at.strftime('%d/%m/%Y %H:%M') %></td>
+        </tr>
+        <tr>
+          <td><b>Ubicación:</b></td>
+          <td><%= @event.location %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=400x300&center=#{@event.latitude},#{@event.longitude}&markers=#{@event.latitude},#{@event.longitude}&key=#{ENV['MAPS_API_KEY']}", alt: "Map", class: 'map' %>
+          </td>
         </tr>
       </table>
     </div>

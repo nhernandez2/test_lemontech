@@ -9,3 +9,12 @@ import "controllers"
 import "./jquery.min.js"
 import "./bootstrap.bundle.min.js"
 import "./sb-admin-2.min.js"
+import "chartkick"
+import "Chart.bundle"
+
+window.dispatchMapsEvent = function (...args) {
+  const event = document.createEvent("Events")
+  event.initEvent("google-maps-callback", true, true)
+  event.args = args
+  window.dispatchEvent(event)
+}

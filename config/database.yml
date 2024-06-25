@@ -16,6 +16,7 @@ default: &default
   username: <%= ENV["EVENT_MANAGER_DATABASE_USERNAME"] %>
   password: <%= ENV["EVENT_MANAGER_DATABASE_PASSWORD"] %>
   host: <%= ENV["EVENT_MANAGER_DATABASE_HOST"] %>
+  timezone: +00:00  # Asegúrate de que coincida con la configuración de MySQL
 
 development:
   <<: *default

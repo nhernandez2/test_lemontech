@@ -1,24 +1,30 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Este es un proyecto en Ruby on Rails para la prueba de selección de Lemon Tech
 
-Things you may want to cover:
+# Objetivo
 
-* Ruby version
+- Es un manejador de Eventos, donde cada usuario puede Ver, Crear, Editar y Eliminar los eventos que creó.
 
-* System dependencies
+- El usuario puede registrarse de forma sencilla y comenzar a crear sus Eventos.
 
-* Configuration
+- El usuario puede editar sus datos como Nombre y Edad y también cambiar su password.
 
-* Database creation
+- Se proporciona un pequeño Dashboard donde se muestra un grafico con los eventos agrupados por mes y una lista de los proximos 5 eventos.
 
-* Database initialization
+# Dependencias (Requisitos de ejecución)
 
-* How to run the test suite
+- Git, para clonar el proyecto, instalar según el sistema operativo (o descargar como ZIP)
+- Ruby 3.3.3
+- Rails 7.1.3.4
+- Gema bundler: `gem install bundler`
 
-* Services (job queues, cache servers, search engines, etc.)
+# Instalación
+1. Clonar el proyecto: `git clone https://github.com/nhernandez2/test_lemontech`
+2. Instalar las gemas `bundle install`
+3. Crear la base de datos: `rails db:create db:migrate`
+4. [Opcional] Popular la base de datos con los datos de pruena: `rails db:seed`
+5. Prender el servidor de prueba `rails server`
+6. Abrir el navegador en `localhost:3000`
+7. [Opcional] Para borrar la db en caso de querer volver a empezar `rails db:drop`
 
-* Deployment instructions
-
-* ...

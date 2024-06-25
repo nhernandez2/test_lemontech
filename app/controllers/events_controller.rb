@@ -3,13 +3,12 @@ class EventsController < ApplicationController
 
   # GET /events or /events.json
   def index
-    @events = Event.where(:user_id => current_user.id)
+    @events = current_user.events.where(:user_id => current_user.id)
   end
 
   # GET /events/1 or /events/1.json
   def show
-    @event = Event.find(params[:id])
-
+    @event = current_user.events.find(params[:id])
   end
 
   # GET /events/new
@@ -19,7 +18,7 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
-    @event = Event.find(params[:id])
+    @event = current_user.events.find(params[:id])
   end
 
   # POST /events or /events.json
@@ -79,6 +78,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.require(:event).permit(:name, :description, :date, :location, :capacity)
+      params.require(:event).permit(:name, :description, :date, :location, :capacity, :latitude, :longitude)
     end
 end
