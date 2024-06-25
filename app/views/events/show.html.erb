@@ -38,7 +38,7 @@
         <tr>
           <td></td>
           <td>
-            <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=400x300&center=#{@event.latitude},#{@event.longitude}&markers=#{@event.latitude},#{@event.longitude}&key=#{ENV['MAPS_API_KEY']}", alt: "Map", class: 'map' %>
+            <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=400x300&center=#{@event.latitude},#{@event.longitude}&markers=#{@event.latitude},#{@event.longitude}&key=#{@maps_key}", alt: "Map", class: 'map' %>
           </td>
         </tr>
       </table>
