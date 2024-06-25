@@ -13,21 +13,24 @@ services:
       - "3306:3306"
 
   web:
-    build: .
-    command: bash -c "rm -f tmp/pids/server.pid && rails server -b 0.0.0.0"
+    build:
+      context: .
+      args:
+        RAILS_MASTER_KEY: 
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails server -b 0.0.0.0"
     volumes:
-      - .:/app
+      - .:/rails
     ports:
       - "3000:3000"
     depends_on:
       - db
     environment:
-      - DATABASE_HOST: db
-      - DATABASE_NAME: myapp_development
-      - DATABASE_USERNAME: myapp
-      - DATABASE_PASSWORD: password
-    args:
-      - RAILS_MASTER_KEY: 
+      EVENT_MANAGER_DATABASE_HOST: db
+      EVENT_MANAGER_DATABASE_NAME: myapp
+      EVENT_MANAGER_DATABASE_USERNAME: myapp
+      EVENT_MANAGER_DATABASE_PASSWORD: password
+      RAILS_MASTER_KEY: 
+      RAILS_ENV: development
 
 volumes:
   db_data:

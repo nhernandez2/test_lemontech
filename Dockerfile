@@ -1,76 +1,34 @@
-# syntax = docker/dockerfile:1
+FROM ruby:3.3.3
 
-# Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
-ARG RUBY_VERSION=3.3.3
-
-FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim as base
-
-# Rails app lives here
-WORKDIR /rails
-
-# Set production environment
-ENV RAILS_ENV="production" \
-    BUNDLE_DEPLOYMENT="1" \
-    BUNDLE_PATH="/usr/local/bundle" \
-    BUNDLE_WITHOUT="development"
-
-# Throw-away build stage to reduce size of final image
-FROM base as build
-
+ARG RAILS_ENV=development
 ARG RAILS_MASTER_KEY
 ENV RAILS_MASTER_KEY=$RAILS_MASTER_KEY
 
-RUN echo "RAILS_MASTER_KEY is: $RAILS_MASTER_KEY"
+WORKDIR /rails
 
-# Install packages needed to build gems
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential default-libmysqlclient-dev git libvips pkg-config
+    apt-get install --no-install-recommends -y \
+    build-essential \
+    default-libmysqlclient-dev \
+    git \
+    nodejs \
+    yarn \
+    libvips \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Install application gems
+ENV RAILS_ENV=${RAILS_ENV}
+ENV BUNDLE_PATH=/usr/local/bundle
+
+# Copiar Gemfile y Gemfile.lock para instalar gemas
 COPY Gemfile Gemfile.lock ./
 
+# Instalar las gemas necesarias
 RUN bundle install
 
-RUN rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git
-
-RUN bundle exec bootsnap precompile --gemfile
-
-# Copy application code
 COPY . .
 
-# Precompile bootsnap code for faster boot times
-RUN bundle exec bootsnap precompile app/ lib/
+RUN mkdir -p tmp/pids && \
+    chown -R root:root /rails
 
-RUN apt-get update && apt-get install -y nodejs 
-
-# Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN ./bin/rails assets:precompile
-
-
-# Final stage for app image
-FROM base
-
-# Install packages needed for deployment
-RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl default-mysql-client libvips && \
-    apt-get install -y nodejs && \
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives
-
-# Copy built artifacts: gems, application
-COPY --from=build /usr/local/bundle /usr/local/bundle
-COPY --from=build /rails /rails
-
-# Run and own only the runtime files as a non-root user for security
-RUN useradd rails --create-home --shell /bin/bash && \
-    chown -R rails:rails db log storage tmp
-USER rails:rails
-
-# Entrypoint prepares the database.
-ENTRYPOINT ["/rails/bin/docker-entrypoint"]
-
-# Start the server by default, this can be overwritten at runtime
+# Exponer el puerto que utiliza el servidor Rails
 EXPOSE 3000
-
-RUN bundle install
-
-CMD ["./bin/rails", "server"]
