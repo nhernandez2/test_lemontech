@@ -41,8 +41,8 @@ Para utilizar la api de Google Maps se necesitan las llaves para las credenciale
 5. Abrir el navegador en `localhost:3000`
 
 # Ejecución con Docker
-
-Ejecutar los comandos `docker-compose build` y `docker-compose up`
+1. Agregar el valor de `RAILS_MASTER_KEY` que sera entregado por correo en el archivo `docker-compose.yml`
+2. Ejecutar los comandos `docker-compose build` y `docker-compose up`
 
 
 

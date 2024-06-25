@@ -3,6 +3,8 @@ require "test_helper"
 class EventsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @event = events(:one)
+    @user = users(:one)
+    sign_in @user
   end
 
   test "should get index" do
@@ -17,7 +19,7 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create event" do
     assert_difference("Event.count") do
-      post events_url, params: { event: { capacity: @event.capacity, date: @event.date, description: @event.description, location: @event.location, name: @event.name } }
+      post events_url, params: { event: { capacity: @event.capacity, date: @event.date, description: @event.description, location: @event.location, name: @event.name, latitude: @event.latitude, longitude: @event.longitude, user_id: @user.id } }
     end
 
     assert_redirected_to event_url(Event.last)
@@ -34,7 +36,7 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update event" do
-    patch event_url(@event), params: { event: { capacity: @event.capacity, date: @event.date, description: @event.description, location: @event.location, name: @event.name } }
+    patch event_url(@event), params: { event: { capacity: @event.capacity, date: @event.date, description: @event.description, location: @event.location, name: @event.name, latitude: @event.latitude, longitude: @event.longitude, user_id: @user.id  } }
     assert_redirected_to event_url(@event)
   end
 

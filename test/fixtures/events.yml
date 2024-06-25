@@ -6,6 +6,9 @@ one:
   date: 2024-06-21 16:27:40
   location: MyString
   capacity: 1
+  user: :one
+  latitude: 1
+  longitude: 1
 
 two:
   name: MyString
@@ -13,3 +16,6 @@ two:
   date: 2024-06-21 16:27:40
   location: MyString
   capacity: 1
+  user: :two
+  latitude: 1
+  longitude: 1
