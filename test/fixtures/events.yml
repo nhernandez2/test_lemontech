@@ -3,7 +3,7 @@
 one:
   name: MyString
   description: MyString
-  date: 2024-06-21 16:27:40
+  date: 2030-06-30 16:27:40
   location: MyString
   capacity: 1
   user: :one
@@ -13,7 +13,7 @@ one:
 two:
   name: MyString
   description: MyString
-  date: 2024-06-21 16:27:40
+  date: 2030-06-30 16:27:40
   location: MyString
   capacity: 1
   user: :two
