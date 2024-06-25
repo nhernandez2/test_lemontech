@@ -36,7 +36,7 @@ Para utilizar la api de Google Maps se necesitan las llaves para las credenciale
 # Instalación
 1. Clonar el proyecto: `git clone https://github.com/nhernandez2/test_lemontech`
 2. Instalar gemas `bundle install`
-3. Crear la base de datos: `rails db:create db:migrate`
-4. Prender el servidor de prueba `rails server`
+3. Crear la base de datos: `bundle exec rails db:create db:migrate`
+4. Prender el servidor de prueba `bundle exec rails server`
 5. Abrir el navegador en `localhost:3000`
 
