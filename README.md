@@ -14,7 +14,7 @@ Este es un proyecto en Ruby on Rails para la prueba de selección de Lemon Tech
 
 # Dependencias (Requisitos de ejecución)
 
-- Git, para clonar el proyecto, instalar según el sistema operativo (o descargar como ZIP)
+- Git
 - Ruby 3.3.3
 - Rails 7.1.3.4
 - Gema bundler: `gem install bundler`
