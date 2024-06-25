@@ -20,15 +20,6 @@ Este es un proyecto en Ruby on Rails para la prueba de selección de Lemon Tech
 - Gema bundler: `gem install bundler`
 - MySql para la base de datos
 
-# Instalación
-1. Clonar el proyecto: `git clone https://github.com/nhernandez2/test_lemontech`
-2. Instalar gemas `bundle install`
-3. Crear la base de datos: `rails db:create db:migrate`
-4. [Opcional] Popular la base de datos con los datos de pruena: `rails db:seed`
-5. Prender el servidor de prueba `rails server`
-6. Abrir el navegador en `localhost:3000`
-7. [Opcional] Para borrar la db en caso de querer volver a empezar `rails db:drop`
-
 # Variables de entorno y secretos
 
 Para poder conectarse a la Base de datos es necesario agregar al archivo ``application.yml``` las siguientes variables 
@@ -41,4 +32,11 @@ Para poder conectarse a la Base de datos es necesario agregar al archivo ``appli
 ```
 
 Para utilizar la api de Google Maps se necesitan las llaves para las credenciales de Ruby, estas seran entregadas por correo.
+
+# Instalación
+1. Clonar el proyecto: `git clone https://github.com/nhernandez2/test_lemontech`
+2. Instalar gemas `bundle install`
+3. Crear la base de datos: `rails db:create db:migrate`
+4. Prender el servidor de prueba `rails server`
+5. Abrir el navegador en `localhost:3000`
 
